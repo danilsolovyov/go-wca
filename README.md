@@ -2,7 +2,7 @@
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
 
-[license]: https://github.com/moutend/go-wca/blob/develop/LICENSE
+[license]: https://github.com/danilsolovyov/go-wca/blob/develop/LICENSE
 
 Pure golang bindings for Windows Core Audio API. The `cgo` is not required.
 
@@ -66,7 +66,7 @@ The following list contains the links to the documentation of native API which i
 
 ## Contributing
 
-1. Fork ([https://github.com/moutend/go-wca/fork](https://github.com/moutend/go-wca/fork))
+1. Fork ([https://github.com/danilsolovyov/go-wca/fork](https://github.com/danilsolovyov/go-wca/fork))
 2. Create a feature branch
 3. Add changes
 4. Run `go fmt`

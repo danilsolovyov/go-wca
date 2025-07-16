@@ -24,7 +24,7 @@ Please specify the flag `-o` or `--output` for saving audio file. The `-d` or `-
 
 ## Contributing
 
-1. Fork ([https://github.com/moutend/go-wca/fork](https://github.com/moutend/go-wca/fork))
+1. Fork ([https://github.com/danilsolovyov/go-wca/fork](https://github.com/danilsolovyov/go-wca/fork))
 1. Create a feature branch
 1. Add changes
 1. Run `go fmt`
