@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/go-ole/go-ole"
-	"github.com/moutend/go-wca/pkg/wca"
+	"github.com/danilsolovyov/go-wca/pkg/wca"
 )
 
 func main() {
