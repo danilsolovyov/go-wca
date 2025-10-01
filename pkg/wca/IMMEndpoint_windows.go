@@ -11,7 +11,7 @@ import (
 )
 
 func mmeGetDataFlow(mme *IMMEndpoint, eDataFlow *uint32) (err error) {
-	hr, _, _ := syscall.Syscall(
+	hr, _, _ := syscall.SyscallN(
 		mme.VTable().GetDataFlow,
 		2,
 		uintptr(unsafe.Pointer(mme)),

@@ -11,7 +11,7 @@ import (
 )
 
 func ac2IsOffloadCapable(ac2 *IAudioClient2, category uint32, isOffloadCapable *bool) (err error) {
-	hr, _, _ := syscall.Syscall(
+	hr, _, _ := syscall.SyscallN(
 		ac2.VTable().IsOffloadCapable,
 		3,
 		uintptr(unsafe.Pointer(ac2)),
@@ -24,7 +24,7 @@ func ac2IsOffloadCapable(ac2 *IAudioClient2, category uint32, isOffloadCapable *
 }
 
 func ac2SetClientProperties(ac2 *IAudioClient2, properties *AudioClientProperties) (err error) {
-	hr, _, _ := syscall.Syscall(
+	hr, _, _ := syscall.SyscallN(
 		ac2.VTable().SetClientProperties,
 		2,
 		uintptr(unsafe.Pointer(ac2)),
@@ -42,7 +42,7 @@ func ac2GetBufferSizeLimits(ac2 *IAudioClient2, wfx *WAVEFORMATEX, isEventDriven
 	if isEventDriven {
 		isEventDrivenValue = 1
 	}
-	hr, _, _ := syscall.Syscall6(
+	hr, _, _ := syscall.SyscallN(
 		ac2.VTable().GetBufferSizeLimits,
 		5,
 		uintptr(unsafe.Pointer(ac2)),

@@ -33,8 +33,8 @@ func (v *IMMDeviceEnumerator) GetDefaultAudioEndpoint(eDataFlow, stateMask uint3
 	return
 }
 
-func (v *IMMDeviceEnumerator) GetDevice() (err error) {
-	err = mmdeGetDevice()
+func (v *IMMDeviceEnumerator) GetDevice(id string, mmd **IMMDevice) (err error) {
+	err = mmdeGetDevice(v, id, mmd)
 	return
 }
 

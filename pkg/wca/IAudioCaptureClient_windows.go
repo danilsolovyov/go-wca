@@ -11,7 +11,7 @@ import (
 )
 
 func accGetBuffer(acc *IAudioCaptureClient, data **byte, framesToRead, flags *uint32, devicePosition, qpcPosition *uint64) (err error) {
-	hr, _, _ := syscall.Syscall6(
+	hr, _, _ := syscall.SyscallN(
 		acc.VTable().GetBuffer,
 		6,
 		uintptr(unsafe.Pointer(acc)),
@@ -27,7 +27,7 @@ func accGetBuffer(acc *IAudioCaptureClient, data **byte, framesToRead, flags *ui
 }
 
 func accReleaseBuffer(acc *IAudioCaptureClient, framesRead uint32) (err error) {
-	hr, _, _ := syscall.Syscall(
+	hr, _, _ := syscall.SyscallN(
 		acc.VTable().ReleaseBuffer,
 		2,
 		uintptr(unsafe.Pointer(acc)),
@@ -40,7 +40,7 @@ func accReleaseBuffer(acc *IAudioCaptureClient, framesRead uint32) (err error) {
 }
 
 func accGetNextPacketSize(acc *IAudioCaptureClient, framesInNextPacket *uint32) (err error) {
-	hr, _, _ := syscall.Syscall(
+	hr, _, _ := syscall.SyscallN(
 		acc.VTable().GetNextPacketSize,
 		2,
 		uintptr(unsafe.Pointer(acc)),

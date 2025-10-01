@@ -11,7 +11,7 @@ import (
 )
 
 func arcGetBuffer(arc *IAudioRenderClient, requiredBufferSize uint32, data **byte) (err error) {
-	hr, _, _ := syscall.Syscall(
+	hr, _, _ := syscall.SyscallN(
 		arc.VTable().GetBuffer,
 		3,
 		uintptr(unsafe.Pointer(arc)),
@@ -24,7 +24,7 @@ func arcGetBuffer(arc *IAudioRenderClient, requiredBufferSize uint32, data **byt
 }
 
 func arcReleaseBuffer(arc *IAudioRenderClient, writtenBufferSize, flag uint32) (err error) {
-	hr, _, _ := syscall.Syscall(
+	hr, _, _ := syscall.SyscallN(
 		arc.VTable().ReleaseBuffer,
 		3,
 		uintptr(unsafe.Pointer(arc)),
