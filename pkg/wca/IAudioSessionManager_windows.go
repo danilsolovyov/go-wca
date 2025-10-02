@@ -13,13 +13,10 @@ import (
 func asmGetAudioSessionControl(asm *IAudioSessionManager, audioSessionGUID *ole.GUID, streamFlags uint32, sessionControl **IAudioSessionControl) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		asm.VTable().GetAudioSessionControl,
-		4,
 		uintptr(unsafe.Pointer(asm)),
 		uintptr(unsafe.Pointer(audioSessionGUID)),
 		uintptr(streamFlags),
-		uintptr(unsafe.Pointer(sessionControl)),
-		0,
-		0)
+		uintptr(unsafe.Pointer(sessionControl)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -29,13 +26,10 @@ func asmGetAudioSessionControl(asm *IAudioSessionManager, audioSessionGUID *ole.
 func asmGetSimpleAudioVolume(asm *IAudioSessionManager, audioSessionGUID *ole.GUID, streamFlags uint32, audioVolume **ISimpleAudioVolume) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		asm.VTable().GetSimpleAudioVolume,
-		4,
 		uintptr(unsafe.Pointer(asm)),
 		uintptr(unsafe.Pointer(audioSessionGUID)),
 		uintptr(streamFlags),
-		uintptr(unsafe.Pointer(audioVolume)),
-		0,
-		0)
+		uintptr(unsafe.Pointer(audioVolume)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}

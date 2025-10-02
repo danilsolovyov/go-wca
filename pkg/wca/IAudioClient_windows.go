@@ -14,16 +14,13 @@ import (
 func acInitialize(ac *IAudioClient, shareMode, streamFlags uint32, nsBufferDuration, nsPeriodicity REFERENCE_TIME, format *WAVEFORMATEX, audioSessionGUID *ole.GUID) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().Initialize,
-		7,
 		uintptr(unsafe.Pointer(ac)),
 		uintptr(shareMode),
 		uintptr(streamFlags),
 		uintptr(nsBufferDuration),
 		uintptr(nsPeriodicity),
 		uintptr(unsafe.Pointer(format)),
-		uintptr(unsafe.Pointer(audioSessionGUID)),
-		0,
-		0)
+		uintptr(unsafe.Pointer(audioSessionGUID)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -33,10 +30,8 @@ func acInitialize(ac *IAudioClient, shareMode, streamFlags uint32, nsBufferDurat
 func acGetBufferSize(ac *IAudioClient, bufferFrameSize *uint32) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().GetBufferSize,
-		2,
 		uintptr(unsafe.Pointer(ac)),
-		uintptr(unsafe.Pointer(bufferFrameSize)),
-		0)
+		uintptr(unsafe.Pointer(bufferFrameSize)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -46,10 +41,8 @@ func acGetBufferSize(ac *IAudioClient, bufferFrameSize *uint32) (err error) {
 func acGetStreamLatency(ac *IAudioClient, nsLatency *REFERENCE_TIME) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().GetStreamLatency,
-		2,
 		uintptr(unsafe.Pointer(ac)),
-		uintptr(unsafe.Pointer(nsLatency)),
-		0)
+		uintptr(unsafe.Pointer(nsLatency)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -59,10 +52,8 @@ func acGetStreamLatency(ac *IAudioClient, nsLatency *REFERENCE_TIME) (err error)
 func acGetCurrentPadding(ac *IAudioClient, numPadding *uint32) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().GetCurrentPadding,
-		2,
 		uintptr(unsafe.Pointer(ac)),
-		uintptr(unsafe.Pointer(numPadding)),
-		0)
+		uintptr(unsafe.Pointer(numPadding)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -72,13 +63,10 @@ func acGetCurrentPadding(ac *IAudioClient, numPadding *uint32) (err error) {
 func acIsFormatSupported(ac *IAudioClient, shareMode uint32, wfx *WAVEFORMATEX, wfxClosestMatch **WAVEFORMATEX) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().IsFormatSupported,
-		4,
 		uintptr(unsafe.Pointer(ac)),
 		uintptr(shareMode),
 		uintptr(unsafe.Pointer(wfx)),
-		uintptr(unsafe.Pointer(wfxClosestMatch)),
-		0,
-		0)
+		uintptr(unsafe.Pointer(wfxClosestMatch)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -88,10 +76,9 @@ func acIsFormatSupported(ac *IAudioClient, shareMode uint32, wfx *WAVEFORMATEX, 
 func acGetMixFormat(ac *IAudioClient, wfx **WAVEFORMATEX) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().GetMixFormat,
-		2,
 		uintptr(unsafe.Pointer(ac)),
 		uintptr(unsafe.Pointer(wfx)),
-		0)
+	)
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -101,7 +88,6 @@ func acGetMixFormat(ac *IAudioClient, wfx **WAVEFORMATEX) (err error) {
 func acGetDevicePeriod(ac *IAudioClient, nsDefaultDevicePeriod, nsMinimumDevicePeriod *REFERENCE_TIME) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().GetDevicePeriod,
-		3,
 		uintptr(unsafe.Pointer(ac)),
 		uintptr(unsafe.Pointer(nsDefaultDevicePeriod)),
 		uintptr(unsafe.Pointer(nsMinimumDevicePeriod)))
@@ -114,10 +100,7 @@ func acGetDevicePeriod(ac *IAudioClient, nsDefaultDevicePeriod, nsMinimumDeviceP
 func acStart(ac *IAudioClient) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().Start,
-		1,
-		uintptr(unsafe.Pointer(ac)),
-		0,
-		0)
+		uintptr(unsafe.Pointer(ac)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -127,10 +110,7 @@ func acStart(ac *IAudioClient) (err error) {
 func acStop(ac *IAudioClient) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().Stop,
-		1,
-		uintptr(unsafe.Pointer(ac)),
-		0,
-		0)
+		uintptr(unsafe.Pointer(ac)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -140,10 +120,7 @@ func acStop(ac *IAudioClient) (err error) {
 func acReset(ac *IAudioClient) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().Reset,
-		1,
-		uintptr(unsafe.Pointer(ac)),
-		0,
-		0)
+		uintptr(unsafe.Pointer(ac)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -153,10 +130,8 @@ func acReset(ac *IAudioClient) (err error) {
 func acSetEventHandle(ac *IAudioClient, handle uintptr) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().SetEventHandle,
-		2,
 		uintptr(unsafe.Pointer(ac)),
-		uintptr(handle),
-		0)
+		uintptr(handle))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -167,7 +142,6 @@ func acGetService(ac *IAudioClient, refIID *ole.GUID, obj interface{}) (err erro
 	objValue := reflect.ValueOf(obj).Elem()
 	hr, _, _ := syscall.SyscallN(
 		ac.VTable().GetService,
-		3,
 		uintptr(unsafe.Pointer(ac)),
 		uintptr(unsafe.Pointer(refIID)),
 		objValue.Addr().Pointer())

@@ -16,7 +16,6 @@ func savSetMasterVolume(sav *ISimpleAudioVolume, level float32, eventContext *ol
 
 	hr, _, _ := syscall.SyscallN(
 		sav.VTable().SetMasterVolume,
-		3,
 		uintptr(unsafe.Pointer(sav)),
 		uintptr(levelValue),
 		uintptr(unsafe.Pointer(eventContext)))
@@ -29,10 +28,8 @@ func savSetMasterVolume(sav *ISimpleAudioVolume, level float32, eventContext *ol
 func savGetMasterVolume(sav *ISimpleAudioVolume, level *float32) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		sav.VTable().GetMasterVolume,
-		2,
 		uintptr(unsafe.Pointer(sav)),
-		uintptr(unsafe.Pointer(level)),
-		0)
+		uintptr(unsafe.Pointer(level)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -47,7 +44,6 @@ func savSetMute(sav *ISimpleAudioVolume, mute bool, eventContext *ole.GUID) (err
 	}
 	hr, _, _ := syscall.SyscallN(
 		sav.VTable().SetMute,
-		3,
 		uintptr(unsafe.Pointer(sav)),
 		uintptr(muteValue),
 		uintptr(unsafe.Pointer(eventContext)))
@@ -60,10 +56,8 @@ func savSetMute(sav *ISimpleAudioVolume, mute bool, eventContext *ole.GUID) (err
 func savGetMute(sav *ISimpleAudioVolume, mute *bool) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		sav.VTable().GetMute,
-		2,
 		uintptr(unsafe.Pointer(sav)),
-		uintptr(unsafe.Pointer(mute)),
-		0)
+		uintptr(unsafe.Pointer(mute)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}

@@ -14,10 +14,8 @@ func asc2GetSessionIdentifier(asc2 *IAudioSessionControl2, retVal *string) (err 
 	var retValPtr uint64
 	hr, _, _ := syscall.SyscallN(
 		asc2.VTable().GetSessionIdentifier,
-		2,
 		uintptr(unsafe.Pointer(asc2)),
-		uintptr(unsafe.Pointer(&retValPtr)),
-		0)
+		uintptr(unsafe.Pointer(&retValPtr)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -41,10 +39,8 @@ func asc2GetSessionInstanceIdentifier(asc2 *IAudioSessionControl2, retVal *strin
 	var retValPtr uint64
 	hr, _, _ := syscall.SyscallN(
 		asc2.VTable().GetSessionInstanceIdentifier,
-		2,
 		uintptr(unsafe.Pointer(asc2)),
-		uintptr(unsafe.Pointer(&retValPtr)),
-		0)
+		uintptr(unsafe.Pointer(&retValPtr)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -67,10 +63,8 @@ func asc2GetSessionInstanceIdentifier(asc2 *IAudioSessionControl2, retVal *strin
 func asc2GetProcessId(asc2 *IAudioSessionControl2, retVal *uint32) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		asc2.VTable().GetProcessId,
-		2,
 		uintptr(unsafe.Pointer(asc2)),
-		uintptr(unsafe.Pointer(retVal)),
-		0)
+		uintptr(unsafe.Pointer(retVal)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -80,10 +74,7 @@ func asc2GetProcessId(asc2 *IAudioSessionControl2, retVal *uint32) (err error) {
 func asc2IsSystemSoundsSession(asc2 *IAudioSessionControl2) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		asc2.VTable().IsSystemSoundsSession,
-		1,
-		uintptr(unsafe.Pointer(asc2)),
-		0,
-		0)
+		uintptr(unsafe.Pointer(asc2)))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}
@@ -98,10 +89,8 @@ func asc2SetDuckingPreference(asc2 *IAudioSessionControl2, optOut bool) (err err
 	}
 	hr, _, _ := syscall.SyscallN(
 		asc2.VTable().SetDuckingPreference,
-		2,
 		uintptr(unsafe.Pointer(asc2)),
-		uintptr(optOutValue),
-		0)
+		uintptr(optOutValue))
 	if hr != 0 {
 		err = ole.NewError(hr)
 	}

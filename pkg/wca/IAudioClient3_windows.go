@@ -13,7 +13,6 @@ import (
 func ac3GetSharedModeEnginePeriod(ac3 *IAudioClient3, wfx *WAVEFORMATEX, defaultPeriodInFrames, fundamentalPeriodInFrames, minPeriodInFrames, maxPeriodInFrames *uint32) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac3.VTable().GetSharedModeEnginePeriod,
-		6,
 		uintptr(unsafe.Pointer(ac3)),
 		uintptr(unsafe.Pointer(wfx)),
 		uintptr(unsafe.Pointer(defaultPeriodInFrames)),
@@ -29,7 +28,6 @@ func ac3GetSharedModeEnginePeriod(ac3 *IAudioClient3, wfx *WAVEFORMATEX, default
 func ac3GetCurrentSharedModeEnginePeriod(ac3 *IAudioClient3, wfx **WAVEFORMATEX, currentPeriodInFrames *uint32) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac3.VTable().GetCurrentSharedModeEnginePeriod,
-		3,
 		uintptr(unsafe.Pointer(ac3)),
 		uintptr(unsafe.Pointer(wfx)),
 		uintptr(unsafe.Pointer(currentPeriodInFrames)))
@@ -42,7 +40,6 @@ func ac3GetCurrentSharedModeEnginePeriod(ac3 *IAudioClient3, wfx **WAVEFORMATEX,
 func ac3InitializeSharedAudioStream(ac3 *IAudioClient3, streamFlags, periodInFrames uint32, wfx *WAVEFORMATEX, audioSessionGUID *ole.GUID) (err error) {
 	hr, _, _ := syscall.SyscallN(
 		ac3.VTable().InitializeSharedAudioStream,
-		5,
 		uintptr(unsafe.Pointer(ac3)),
 		uintptr(streamFlags),
 		uintptr(periodInFrames),
